@@ -3,7 +3,7 @@ import web
 
 urls = (
   '/', 'Index',
-  '/foo', 'Foo'
+  '/callback', 'CallBack'
 )
 
 render = web.template.render('templates', base='base')
@@ -17,9 +17,11 @@ class Index:
         name = None   
         return render.index(name)
 
-class Foo:
+class CallBack:
     def GET(self):
-        return "Hello, fool!!"
+        inp = web.input(name=None)
+        print("GET request to callback with param {}".format(inp.name))      
+        return render.callback(inp.name)
 
 
 if __name__ == "__main__": 
