@@ -19,9 +19,11 @@ class Index:
 
 class CallBack:
     def GET(self):
-        inp = web.input(name=None)
-        print("GET request to callback with param {}".format(inp.name))      
-        return render.callback(inp.name)
+        data = web.input()
+        print("GET request to callback with param") 
+        for i in data:
+            print("{} = {}".format(i, [data[i]]))      
+        return render.callback(len(data))
 
 
 if __name__ == "__main__": 
